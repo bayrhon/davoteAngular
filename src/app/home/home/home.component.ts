@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
+  selector: 'app-home',
+  templateUrl: './home.component.html',
   styles: []
 })
-export class HeaderComponent implements OnInit {
-  title =  environment.appName;
+export class HomeComponent implements OnInit {
+  public numProjects = environment.projects.length;
   constructor() { }
 
   ngOnInit(): void {

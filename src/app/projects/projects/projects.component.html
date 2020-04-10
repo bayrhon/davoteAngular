@@ -1,0 +1,24 @@
+<h2>Proyectos</h2>
+<header class="sticky">
+  <a routerLink="newproject" routerLinkActive="router-link-active" class="button">
+    <span class="icon-edit"></span><span>Añadir proyecto</span>
+  </a>
+</header>
+<br />
+<table>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Detalle</th>
+    </tr>
+    <tr *ngFor="let item of projects">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>
+          <a [routerLink]="item.id" routerLinkActive="router-link-active" class="button">
+            <span> Details</span>
+          </a>
+        </td>
+    </tr>
+</table>
+<router-outlet></router-outlet>
