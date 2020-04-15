@@ -1,14 +1,23 @@
-<form>
-    <fieldset>
-        <legend>Nuevo proyecto</legend>
-        <section>
-          <label for="id">id</label>
-          <input name="id" type="text" [(ngModel)]="project.id" placeholder="Project id"/>
-        </section>
-        <section>
-          <label for="name">Nonbre del Proyecto</label>
-          <input name="name" type="text" [(ngModel)]="project.name" placeholder="Project name"/>
-        </section>
-    </fieldset>
-    <input value="Save" type="submit" (click)="saveProject()" />
-</form>
+<h2>Proyectos</h2>
+<header class="sticky">
+  <a routerLink="/projects" routerLinkActive="router-link-active" class="button">
+    <span class="icon-edit"></span><span>Listado de Proyectos</span>
+  </a>
+</header>
+<br />
+<section>
+  <form>
+      <fieldset>
+          <legend>Nuevo proyecto</legend>
+          <section>
+            <label for="id">id</label>
+            <input name="id" type="text" [(ngModel)]="project.id" placeholder="Project id"/>
+          </section>
+          <section>
+            <label for="name">Nonbre del Proyecto</label>
+            <input name="name" type="text" [(ngModel)]="project.name" placeholder="Project name"/>
+          </section>
+      </fieldset>
+      <input value="Save" type="submit" (click)="save(project)" />
+  </form>
+</section>

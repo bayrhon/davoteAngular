@@ -1,8 +1,9 @@
 <section>
-  <h2>Detalle de proyecto</h2>
+  <h2>Detalle de proyecto - {{project.name}}</h2>
   <section>
       <ul>
-        <li>Id: {{projectId}}</li>
+        <li>Id: {{project.id}}</li>
+        <li>Name: {{project.name}}</li>
       </ul>
     <a routerLink="/projects" routerLinkActive="router-link-active" class="button">
       <span>Volver</span>

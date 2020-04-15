@@ -8,17 +8,16 @@ const routes: Routes = [
   {
     path: '',
     component: ProjectsComponent,
-    children: [
-      {
-        path: 'newproject',
-        component: NewprojectComponent
-      },
-    ]
+  },
+  {
+    path: 'newproject',
+    component: NewprojectComponent
   },
   {
     path: ':id',
     component: ViewerprojectComponent
-  }
+  },
+
 ];
 
 @NgModule({

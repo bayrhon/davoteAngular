@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectsserviceService } from 'src/app/core/projectsservice.service';
 import { environment } from 'src/environments/environment';
 import { Project } from '../models/project.model';
 
@@ -9,29 +10,29 @@ import { Project } from '../models/project.model';
 })
 export class NewprojectComponent implements OnInit {
 
-  public newMaxid = (environment.projects.length) + 1
-
+  //Propiedades
+  public newMaxid = (environment.projects.length);
   public project: Project;
-  public projects = environment.projects;
-  public numprojects = 0;
-  constructor() { }
 
+  //Constructor
+  constructor(private ProjectsserviceService:ProjectsserviceService) { }
+  //Inicializador
   ngOnInit(): void {
-
     //Proyecto
     this.project = {
       id: this.newMaxid,
-      name: 'David',
+      name: '',
     };
   }
 
-  public saveProject() {
-    this.projects.push({ ...this.project });
-    this.numprojects = this.projects.length;
+  //Metodos
+  public save(project: any) {
+    this.ProjectsserviceService.saveProject(project);
+    this.newMaxid = (environment.projects.length);
+    this.project = {
+      id: this.newMaxid,
+      name: '',
+    };
   }
 
-  public deleteProject(project: Project) {
-    this.projects = this.projects.filter(p => p.id !== project.id);
-    this.numprojects = this.projects.length;
-  }
 }
