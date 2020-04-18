@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsserviceService } from 'src/app/core/projectsservice.service';
-import { environment } from 'src/environments/environment';
 import { Project } from '../models/project.model';
 
 @Component({
@@ -11,16 +10,16 @@ import { Project } from '../models/project.model';
 export class NewprojectComponent implements OnInit {
 
   //Propiedades
-  public newMaxid = (environment.projects.length);
   public project: Project;
 
   //Constructor
   constructor(private ProjectsserviceService:ProjectsserviceService) { }
+
   //Inicializador
   ngOnInit(): void {
     //Proyecto
     this.project = {
-      id: this.newMaxid,
+      id: 0,
       name: '',
     };
   }
@@ -28,9 +27,8 @@ export class NewprojectComponent implements OnInit {
   //Metodos
   public save(project: any) {
     this.ProjectsserviceService.saveProject(project);
-    this.newMaxid = (environment.projects.length);
     this.project = {
-      id: this.newMaxid,
+      id: 0,
       name: '',
     };
   }

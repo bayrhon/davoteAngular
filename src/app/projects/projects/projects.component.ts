@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
 import { ProjectsserviceService } from 'src/app/core/projectsservice.service';
-import { Project } from './models/project.model';
 
 @Component({
   selector: 'app-projects',
@@ -9,24 +10,23 @@ import { Project } from './models/project.model';
 })
 export class ProjectsComponent implements OnInit {
   //Propiedades
-  public projects: any[];
-  public project: Project;
+  public projects$: Observable<any> = null;
 
   //Constructor
   constructor(private ProjectsserviceService:ProjectsserviceService) { }
 
   //Inicializador
   ngOnInit(): void {
-      this.projects = this.ProjectsserviceService.projects;
+      this.projects$ = this.ProjectsserviceService.getProjects().pipe(share());
   }
 
   public onFilter(id: number) {
-    this.projects = this.ProjectsserviceService.filtrarProjects(id);
+    this.projects$ = this.ProjectsserviceService.filtrarProjects(id);
   }
 
   public onDeleteFilter(deleteFilter: number) {
     if(deleteFilter === 1) {
-      this.projects = this.ProjectsserviceService.deleteFilters();
+      this.projects$ = this.ProjectsserviceService.deleteFilters();
     }
   }
 }

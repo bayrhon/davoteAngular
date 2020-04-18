@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ProjectsserviceService } from 'src/app/core/projectsservice.service';
 
 @Component({
@@ -9,9 +10,10 @@ import { ProjectsserviceService } from 'src/app/core/projectsservice.service';
 export class DashboardComponent implements OnInit {
 
   constructor(private ProjectsserviceService:ProjectsserviceService) { }
-  public numProjects: number;
+  public numProjects$: Observable<any>;
+
   ngOnInit(): void {
-    this.numProjects = this.ProjectsserviceService.getNumberOfProjects();
+    this.numProjects$ = this.ProjectsserviceService.getNumberOfProjects();
   }
 
 }
