@@ -6,18 +6,20 @@
 </header>
 <br />
 <section>
-  <form>
+  <form [formGroup]="formGroup">
       <fieldset>
           <legend>Nuevo proyecto</legend>
           <section>
             <label for="id">id</label>
-            <input name="id" type="text" [(ngModel)]="project.id" placeholder="Project id"/>
+            <input name="id" type="text" formControlName="id" placeholder="Project id"/>
+            <span>{{ getError('id')}}</span>
           </section>
           <section>
             <label for="name">Nonbre del Proyecto</label>
-            <input name="name" type="text" [(ngModel)]="project.name" placeholder="Project name"/>
+            <input name="name" type="text" formControlName="name" placeholder="Project name"/>
+            <span>{{ getError('name')}}</span>
           </section>
       </fieldset>
-      <input value="Save" type="submit" (click)="save(project)" />
+      <input value="Save" type="submit" (click)="save()" [disabled]="formGroup.invalid" />
   </form>
 </section>

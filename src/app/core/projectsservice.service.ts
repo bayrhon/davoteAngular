@@ -67,4 +67,13 @@ export class ProjectsserviceService {
       map(this.mapeo, this)
     );
   }
+
+  public getDetailProject(id: number){
+    this.projects$ = this.getProjects();
+    this.idBuscar = id;
+    return this.projects$.pipe(
+      map(this.mapeo, this)
+    );
+  }
+
 }
